@@ -532,4 +532,16 @@
   .card-footer span {
     margin-right: 10px;
   }
+  .remove_btn {
+    background-color: #866e6e; /* Red background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 3px;
+    cursor: pointer; /* Add cursor pointer */
+    border-radius: 8px; /* Add border radius */
+    transition: background-color 0.3s; /* Add transition effect */
+  }
   
+  .remove_btn:hover {
+    background-color: #ff3333; /* Darker red color on hover */
+  }

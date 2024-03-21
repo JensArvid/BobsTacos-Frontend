@@ -91,4 +91,5 @@ const ShoppingCart = createSlice({
 })
 
 export const  {AddCart, removeCart, AddWishlist, removeWishlist, decreaseCart, clearCart, getTotals, setLoggedInStatus} = ShoppingCart.actions;
+
 export default ShoppingCart.reducer

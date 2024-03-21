@@ -40,7 +40,12 @@ const Login = () => {
           sessionStorage.setItem('firstName', resp.firstName);
           sessionStorage.setItem('lastName', resp.lastName);
           sessionStorage.setItem('userId', resp.id); // Store the user ID
-          navigate('/account');
+
+          if (resp.role === 'admin') {
+          navigate('/admin-profile'); // Redirect to AdminProfile for admins
+        } else {
+          navigate('/account'); // Redirect to account page for regular users
+        }
           window.location.reload();
         }
          

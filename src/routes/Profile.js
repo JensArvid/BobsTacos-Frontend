@@ -1,22 +1,25 @@
 import React from "react";
 import Navbar from "../components/header/Navbar";
 import { Link } from "react-router-dom";
-
-
-import { useSelector } from "react-redux";
-import { toast } from "react-hot-toast";
+import {  useDispatch, useSelector } from "react-redux";
 import Logout from "./Logout";
 import Login from "./Login";
-import Register from "./Register";
+import { removeWishlist } from "../components/redux/ShoppingCart";
+
 
 const Profile = ({ showNavbar }) => {
   const firstName = sessionStorage.getItem('firstName');
   const lastName = sessionStorage.getItem('lastName');
   const ID = sessionStorage.getItem('userId')
   const { wish } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   console.log("User ID:", ID); // Log user ID
   console.log("first Name:", firstName); // Log user ID
 
+  const removeFromWishlist = (itemId) => {
+    // Dispatch the removeWishlist action with the item id
+    dispatch(removeWishlist({ id: itemId }));
+  };
   const renderProfileContent = () => {
     if (firstName && lastName) {
         return (
@@ -45,7 +48,9 @@ const Profile = ({ showNavbar }) => {
                         <div className="food-name">{food_cart.name}</div>
                         <div className="rat-pir">
                         <div className="approx-price">{food_cart.price + "$"}</div>
+                        <button className="remove_btn" onClick={() => removeFromWishlist(food_cart.id)}>Remove</button>
                         </div>
+                        
                     </div>
                     ))
                 )}
